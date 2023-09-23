@@ -11,10 +11,45 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <h3>Fruit Stores</h3>
+    <nav
+      class="navbar bg-primary sticky-top navbar-expand-lg"
+      data-bs-theme="light"
+    >
+      <div class="container-fluid mx-4 justify-content-between">
+        <a class="navbar-brand text-white" href="/">Fruit Stores</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link text-white" href="/fruits">Fruit</a>
+            <a class="nav-link text-white" href="/categories">Category</a>
+            <a class="nav-link text-white" href="/brands">Brand</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="fullscreen-bg">
+      <img
+        src="https://sahabatkecc.com/wp-content/uploads/2019/07/buah-buahan.jpg"
+        alt="Background Image"
+      />
+    </div>
+
+    <div class="container text-center overlay">
+      <h1 class="display-4">Selamat Datang di Fruit Stores</h1>
+      <p class="lead">Toko Buah Terbaik di Kota Anda</p>
     </div>
     <!-- JavaScript Only -->
     <script

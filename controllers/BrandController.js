@@ -3,11 +3,18 @@ const { brand, fruit } = require("../models");
 class BrandController {
   static async getBrands(req, res) {
     try {
-      let brands = await brand.findAll({});
-      res.json(brands);
+      const brands = await brand.findAll({
+        order: [["id", "ASC"]],
+      });
+      res.render("brands/brands.ejs", { brands: brands });
+      // res.json(brands);
     } catch (err) {
       res.json(err);
     }
+  }
+
+  static async addBrandPage(req, res) {
+    res.render("brands/addBrandPage.ejs");
   }
 
   static async addBrand(req, res) {
@@ -22,7 +29,8 @@ class BrandController {
       let newFruit = await fruit.create({
         brandId: newBrand.id,
       });
-      res.json(newBrand);
+      res.redirect("/brands");
+      // res.json(newBrand);
     } catch (err) {
       res.json(err);
     }
@@ -38,10 +46,21 @@ class BrandController {
         where: { brandId: id },
       });
       result === 1
-        ? res.json({ message: `Brand with id: ${id} Deleted!` })
+        ? res.redirect("/brands")
         : res.json({
             message: `Brand with id: ${id} not found`,
           });
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  static async updateBrandPage(req, res) {
+    try {
+      const id = +req.params.id;
+
+      const result = await brand.findByPk(id);
+      res.render("brands/updateBrandPage.ejs", { brand: result });
     } catch (err) {
       res.json(err);
     }
@@ -63,7 +82,7 @@ class BrandController {
         }
       );
       result[0] === 1
-        ? res.json({ message: `Brand with id: ${id} Updated!` })
+        ? res.redirect("/brands")
         : res.json({
             message: `Brand with id: ${id} not found`,
           });

@@ -7,10 +7,15 @@ class FruitController {
         include: [brand, category],
         order: [["id", "ASC"]],
       });
-      res.json(fruits);
+      // res.json(fruits);
+      res.render("fruits/fruits.ejs", { fruits: fruits });
     } catch (err) {
       res.json(err);
     }
+  }
+
+  static async addFruitPage(req, res) {
+    res.render("fruits/addFruitPage.ejs");
   }
 
   static async addFruit(req, res) {
@@ -24,7 +29,8 @@ class FruitController {
         categoryId,
         brandId,
       });
-      res.json(newFruit);
+      // res.json(newFruit);
+      res.redirect("/fruits");
     } catch (err) {
       res.json(err);
     }
@@ -37,8 +43,18 @@ class FruitController {
         where: { id },
       });
       fruitResult === 1
-        ? res.json({ message: `Fruit with id: ${id} Deleted!` })
+        ? res.redirect("/fruits")
         : res.json({ message: `Fruit with id: ${id} not found` });
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  static async updateFruitPage(req, res) {
+    try {
+      const id = +req.params.id;
+      const fruitResult = await fruit.findByPk(id);
+      res.render("fruits/updateFruitPage.ejs", { fruit: fruitResult });
     } catch (err) {
       res.json(err);
     }
@@ -63,7 +79,7 @@ class FruitController {
       );
 
       fruitResult[0] === 1
-        ? res.json({ message: `Fruit with id: ${id} Updated!` })
+        ? res.redirect("/fruits")
         : res.json({ message: `Fruit with id: ${id} not found` });
     } catch (err) {
       res.json(err);
