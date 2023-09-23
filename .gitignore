@@ -1,0 +1,7 @@
+//Ignoring packages
+node_modules/
+
+//Ignoring data
+package-lock.json
+.env
+EXAMPLE.md

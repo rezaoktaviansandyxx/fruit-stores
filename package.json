@@ -1,0 +1,32 @@
+{
+  "name": "fruit-stores",
+  "version": "1.0.0",
+  "description": "Tugas seorang admin CMS adalah untuk memasukkan data-data dari informasi yang ada. Terdapat 3 table utama: `Fruits`, `Categories`, dan `Brands` yang akan di masukkan ke dalam sebuah platform web.",
+  "main": "index.js",
+  "scripts": {
+    "jalan": "nodemon app.js",
+    "db-lakukan": "sequelize db:create && sequelize db:migrate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-academy-batch-agustus-23/fruit-stores.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code-academy-batch-agustus-23/fruit-stores/issues"
+  },
+  "homepage": "https://github.com/code-academy-batch-agustus-23/fruit-stores#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "sequelize-cli": "^6.6.1"
+  }
+}
